@@ -59,6 +59,17 @@ describe('Trails', () => {
         it('should set paths.sockets if not configured explicitly by user', () => {
           assert(global.app.config.get('main.paths.sockets'))
         })
+        it('should set default config value if not configured explicitly by user', () => {
+          assert.equal(global.app.config.get('testpack.defaultValue'), 'default')
+          assert.equal(global.app.config.get('testpack.defaultObject.test'), 'ok')
+        })
+        it('should override config if configured explicitly by user', () => {
+          assert.equal(global.app.config.get('testpack.defaultValue'), 'default')
+          assert.equal(global.app.config.get('testpack.override'), 'ok')
+          assert.equal(global.app.config.get('testpack.defaultObject.override'), 'ok')
+          assert.equal(global.app.config.get('testpack.defaultObject.test'), 'ok')
+          //FIXME merge array not working assert.equal(global.app.config.get('testpack.defaultArray'), ['ok', 'ko'])
+        })
       })
 
       describe('errors', () => {

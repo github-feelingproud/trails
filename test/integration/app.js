@@ -34,6 +34,13 @@ const App = {
         testdir: path.resolve(__dirname, 'testdir')
       }
     },
+    testpack: {
+      override: 'ok',
+      defaultArray: ['ko'],
+      defaultObject: {
+        override: 'ok'
+      }
+    },
     i18n: {
       lng: 'en',
       resources: {
